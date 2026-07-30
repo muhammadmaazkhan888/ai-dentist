@@ -1,51 +1,58 @@
 "use client";
 
+import Navbar from "./components/Navbar";
+import AIChat from "./components/AIChat";
+import DentalScan from "./components/DentalScan";
 import { useState } from "react";
 
 export default function Home() {
 
   const [submitted, setSubmitted] = useState(false);
 
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-900 to-cyan-700 text-white">
 
-      <nav className="flex justify-between p-6">
-        <h1 className="text-3xl font-bold text-cyan-300">
-          AI Dentist 🦷
-        </h1>
 
-        <button className="bg-cyan-400 text-black px-5 py-2 rounded-full">
-          Book Now
-        </button>
-      </nav>
+      <Navbar />
 
 
-      <section className="flex items-center justify-center min-h-screen px-6">
+      {/* HERO SECTION */}
 
-        <div className="text-center max-w-4xl">
+      <section
+        id="home"
+        className="min-h-screen flex items-center justify-center px-6 text-center pt-20"
+      >
 
-          <p className="text-cyan-300 font-bold">
+        <div className="max-w-4xl">
+
+          <p className="text-cyan-300 font-bold tracking-widest">
             AI POWERED DENTAL CLINIC
           </p>
 
 
-          <h1 className="text-6xl font-extrabold mt-5">
-            Future Of
+          <h1 className="text-6xl font-extrabold mt-4">
+            Future of
+
             <span className="block text-cyan-300">
               Dental Care
             </span>
+
           </h1>
 
 
           <p className="mt-6 text-xl">
-            Smart AI dental assistant, online consultation,
-            appointment booking and premium patient experience.
+            Smart AI assistant, dental scanning and premium patient experience.
           </p>
 
 
-          <button className="mt-8 bg-cyan-400 text-black px-10 py-4 rounded-full font-bold">
+          <a
+            href="#booking"
+            className="inline-block mt-8 bg-cyan-400 text-black px-8 py-3 rounded-full font-bold"
+          >
             Book Appointment
-          </button>
+          </a>
+
 
         </div>
 
@@ -53,98 +60,179 @@ export default function Home() {
 
 
 
-      <section className="bg-white text-black m-6 p-8 rounded-3xl">
+      {/* SERVICES */}
 
-        <h2 className="text-4xl font-bold text-blue-900">
-          AI Dental Features
+      <section
+        id="services"
+        className="bg-white text-black rounded-3xl m-6 p-8"
+      >
+
+        <h2 className="text-4xl font-bold text-center">
+          Our AI Dental Services
         </h2>
 
 
-        <div className="grid md:grid-cols-3 gap-5 mt-8">
+        <div className="grid md:grid-cols-3 gap-6 mt-8">
 
 
-          <div className="bg-blue-50 p-6 rounded-xl">
-            🦷
-            <h3 className="font-bold text-xl">
-              AI Diagnosis
+          {/* AI SCAN CARD */}
+
+          <a
+            href="#scan"
+            className="p-6 bg-blue-50 rounded-2xl shadow hover:scale-105 transition cursor-pointer"
+          >
+
+            <h3 className="text-xl font-bold">
+              🦷 AI Dental Scan
             </h3>
-            <p>
-              Detect dental problems faster.
+
+
+            <p className="mt-2">
+              Upload tooth image and get AI analysis.
             </p>
-          </div>
 
 
-          <div className="bg-blue-50 p-6 rounded-xl">
-            🤖
-            <h3 className="font-bold text-xl">
-              AI Assistant
+            <button className="mt-4 bg-blue-600 text-white px-5 py-2 rounded-xl">
+              Start Scan
+            </button>
+
+
+          </a>
+
+
+
+
+          {/* AI CHAT CARD */}
+
+          <a
+            href="#ai"
+            className="p-6 bg-blue-50 rounded-2xl shadow hover:scale-105 transition"
+          >
+
+            <h3 className="text-xl font-bold">
+              🤖 AI Consultation
             </h3>
-            <p>
-              24/7 patient support.
+
+
+            <p className="mt-2">
+              Ask dental questions anytime.
             </p>
-          </div>
 
 
-          <div className="bg-blue-50 p-6 rounded-xl">
-            📅
-            <h3 className="font-bold text-xl">
-              Smart Booking
+          </a>
+
+
+
+
+          {/* BOOKING CARD */}
+
+          <a
+            href="#booking"
+            className="p-6 bg-blue-50 rounded-2xl shadow hover:scale-105 transition"
+          >
+
+            <h3 className="text-xl font-bold">
+              📅 Smart Booking
             </h3>
-            <p>
-              Easy online appointments.
+
+
+            <p className="mt-2">
+              Easy appointment management.
             </p>
-          </div>
+
+
+          </a>
 
 
         </div>
-
 
       </section>
 
 
 
-      <section className="p-6">
-
-        <div className="bg-white text-black rounded-3xl p-8">
 
 
-          <h2 className="text-4xl font-bold text-center">
-            Book Appointment
-          </h2>
+      {/* AI DENTAL SCAN */}
+
+      <section id="scan">
+
+        <DentalScan />
+
+      </section>
+
+
+
+
+
+      {/* AI CHAT */}
+
+      <section id="ai">
+
+        <AIChat />
+
+      </section>
+
+
+
+
+
+      {/* BOOKING */}
+
+      <section
+        id="booking"
+        className="m-6 bg-white text-black rounded-3xl p-8"
+      >
+
+        <h2 className="text-4xl font-bold">
+          Book Appointment
+        </h2>
+
+
+
+        <div className="space-y-4 mt-6">
 
 
           <input
-          className="border p-3 rounded-xl w-full mt-6"
-          placeholder="Your Name"
+            className="w-full border rounded-xl p-3"
+            placeholder="Full Name"
           />
+
 
 
           <input
-          className="border p-3 rounded-xl w-full mt-4"
-          placeholder="Phone Number"
+            className="w-full border rounded-xl p-3"
+            placeholder="Phone Number"
           />
+
 
 
           <button
-          onClick={()=>setSubmitted(true)}
-          className="bg-blue-600 text-white w-full mt-5 p-4 rounded-xl font-bold"
+            onClick={() => setSubmitted(true)}
+            className="w-full bg-blue-600 text-white rounded-xl p-4 font-bold"
           >
+
             Confirm Appointment
+
           </button>
 
 
-          {
-            submitted &&
-            <p className="bg-green-100 text-green-700 p-4 mt-4 rounded-xl text-center">
+
+          {submitted && (
+
+            <div className="bg-green-100 text-green-700 rounded-xl p-4 text-center">
+
               ✅ Appointment Submitted Successfully
-            </p>
-          }
+
+            </div>
+
+          )}
 
 
         </div>
 
 
       </section>
+
 
 
     </main>
